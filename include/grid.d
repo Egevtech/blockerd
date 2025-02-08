@@ -7,6 +7,8 @@ import std.conv : to;
 import std.conv;
 import std.string;
 
+import include.block;
+
 // typedef ;
 
 alias Color = raylib.raylib_types.Color;
@@ -24,16 +26,11 @@ struct Cords {
 	int y;
 }
 
-class Block {
-
-}
-
 class Cell {
 	Block block;
 };
 
 Cell[] gridCells;
-
 
 Cords mouseCords = {0, 0};
 Cords gridCords = {0, 0};
@@ -71,33 +68,31 @@ void drawGrid() {
 		gridCords.y += wheelMove * 7f;
 	}
 
-	DrawLine(gridCords.x, gridCords.y, gridCords.x+rowNum*rowLen, gridCords.y, ColWhite);
-	DrawLine(gridCords.x + rowNum*rowLen, gridCords.y, gridCords.x + rowNum*rowLen, gridCords.y + rowNum*rowLen, ColWhite);
-	DrawLine(gridCords.x + rowNum*rowLen, gridCords.y + rowNum*rowLen, gridCords.x, gridCords.y + rowNum*rowLen, ColWhite);
-	DrawLine(gridCords.x, gridCords.y + rowNum*rowLen, gridCords.x, gridCords.y, ColWhite);
+	if (rowLen > 50) {
+		rowLen = 50;
 
-	Cords grida = gridCords;
-
-	for (int i = 0; i < rowNum; i++) {
-		Color c = ColWhite;
-
-		if (grida.x < mouseCords.x && mouseCords.x < grida.x + rowLen) c = Reddy;
-		if (grida.x > mouseCords.x && mouseCords.x > grida.x - rowLen) c = Reddy;
-
-		DrawText(to!string(i).toStringz(), (grida.x + (MeasureText(to!string(i).toStringz(), 10)/2)), grida.y - 15, 20, ColWhite);
-
-		DrawLine(grida.x, grida.y, grida.x, grida.y+rowNum*rowLen, c);
-		grida.x += rowLen;
+		gridCords.x += wheelMove * 7f;
+		gridCords.y += wheelMove * 7f;
 	}
 
-	for (int i = 0; i < rowNum; i++) {
-		Color c = ColWhite;
+	for (int nx = 0; nx < rowNum; nx++) {
+	for (int ny = 0; ny < rowNum; ny++) 
+	{
 
-		if (grida.y < mouseCords.y && mouseCords.y < grida.y + rowLen) c = Reddy;
-		if (grida.y > mouseCords.y && mouseCords.y > grida.y - rowLen) c = Reddy;
+		Color col = ColWhite;
 
-		DrawLine(gridCords.x, grida.y, gridCords.x+rowNum*rowLen - 10/2, grida.y, c);
-		grida.y += rowLen;
-	}
+		int cellX = nx*rowLen + gridCords.x;
+		int cellY = ny*rowLen + gridCords.y;
 
+		if (mouseCords.x > cellX &&
+			mouseCords.x < cellX + rowLen &&
+			mouseCords.y > cellY &&
+			mouseCords.y < cellY + rowLen ) {
+				Color ReddyA = Reddy;
+				ReddyA.a = 100;
+				DrawRectangle(cellX, cellY, rowLen, rowLen, ReddyA);
+			}
+
+		else DrawRectangleLines(cellX, cellY, rowLen, rowLen, col);
+	}}
 }
