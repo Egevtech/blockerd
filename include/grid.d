@@ -1,24 +1,15 @@
 import raylib;
 
-import include.block;
 import include.cords;
 import include.colors;
-
-int rowNum = 25;
-int rowLen = 50;
-int textSize = 10;
-
-class Cell {
-	Block block;
-};
-
-Cell[] gridCells;
+import include.block;
+import include.settings;
 
 void showGrid() {
 	Cords oldCords = mouseCords;
 	pushMouseCords(&mouseCords);
 
-	if ((oldCords.x != mouseCords.x || oldCords.y != mouseCords.y) && IsMouseButtonDown(MOUSE_RIGHT_BUTTON)) {
+	if ((oldCords.x != mouseCords.x || oldCords.y != mouseCords.y) && IsMouseButtonDown(MOUSE_MIDDLE_BUTTON)) {
 		gridCords.x -= oldCords.x - mouseCords.x;
 		gridCords.y -= oldCords.y - mouseCords.y;
 	}
@@ -58,18 +49,30 @@ void drawGrid() {
 		int cellX = nx*rowLen + gridCords.x;
 		int cellY = ny*rowLen + gridCords.y;
 
-		if (mouseCords.x > cellX &&
-			mouseCords.x < cellX + rowLen &&
-			mouseCords.y > cellY &&
-			mouseCords.y < cellY + rowLen) 
-				DrawRectangle(cellX, cellY, rowLen, rowLen, AGrey);
-		else 
-			DrawRectangleLines(cellX, cellY, rowLen, rowLen, col);
-	}}
 
+		DrawRectangle(cellX, cellY, rowLen, rowLen, gridCells[nx][ny].block.hintColor);
+
+		if (mouseCords.x >= cellX &&
+			mouseCords.x < cellX + rowLen &&
+			mouseCords.y >= cellY &&
+			mouseCords.y < cellY + rowLen) {
+				DrawRectangle(cellX, cellY, rowLen, rowLen, AGrey);
+				gridNCords = Cords(nx, ny);
+			}
+		else {
+			DrawRectangleLines(cellX, cellY, rowLen, rowLen, col);
+		}	
+	}}
 
 	DrawLine(gridCords.x, gridCords.y, gridCords.x+rowNum*rowLen, gridCords.y, ColWhite);
 	DrawLine(gridCords.x + rowNum*rowLen, gridCords.y, gridCords.x + rowNum*rowLen, gridCords.y + rowNum*rowLen, ColWhite);
 	DrawLine(gridCords.x + rowNum*rowLen, gridCords.y + rowNum*rowLen, gridCords.x, gridCords.y + rowNum*rowLen, ColWhite);
 	DrawLine(gridCords.x, gridCords.y + rowNum*rowLen, gridCords.x, gridCords.y, ColWhite);
+}
+
+bool IsMouseOnCell() {
+	return (mouseCords.x >= gridCords.x &&
+			mouseCords.y >= gridCords.y &&
+			mouseCords.x < gridCords.x + rowNum*rowLen &&
+			mouseCords.y < gridCords.y + rowNum*rowLen);
 }

@@ -7,6 +7,7 @@ struct Cords {
 
 Cords mouseCords = {0, 0};
 Cords gridCords = {0, 0};
+Cords gridNCords = {0, 0};
 
 void pushMouseCords(Cords *crds) {
 	crds.x = GetMouseX();
