@@ -23,3 +23,7 @@ build: target pre
 
 run: build
 	target/blocker
+
+clean:
+	rm -rf target
+	rm -rf temp
