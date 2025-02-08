@@ -1,12 +1,5 @@
 import raylib;
 
-import std.stdio;
-import std.datetime;
-
-import std.conv : to;
-import std.conv;
-import std.string;
-
 import include.block;
 import include.cords;
 import include.colors;

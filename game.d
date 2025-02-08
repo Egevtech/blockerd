@@ -1,8 +1,5 @@
 import raylib;
 
-import std.system;
-import std.stdio;
-
 import include.grid;
 import include.colors;
 
