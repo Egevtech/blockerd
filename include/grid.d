@@ -61,13 +61,10 @@ void drawGrid() {
 		if (mouseCords.x > cellX &&
 			mouseCords.x < cellX + rowLen &&
 			mouseCords.y > cellY &&
-			mouseCords.y < cellY + rowLen ) {
-				Color ReddyA = Reddy;
-				ReddyA.a = 100;
-				DrawRectangle(cellX, cellY, rowLen, rowLen, ReddyA);
-			}
-
-		else DrawRectangleLines(cellX, cellY, rowLen, rowLen, col);
+			mouseCords.y < cellY + rowLen) 
+				DrawRectangle(cellX, cellY, rowLen, rowLen, AGrey);
+		else 
+			DrawRectangleLines(cellX, cellY, rowLen, rowLen, col);
 	}}
 
 
