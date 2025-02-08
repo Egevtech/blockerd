@@ -8,35 +8,18 @@ import std.conv;
 import std.string;
 
 import include.block;
-
-alias Color = raylib.raylib_types.Color;
+import include.cords;
+import include.colors;
 
 int rowNum = 25;
 int rowLen = 50;
 int textSize = 10;
-
-Color ColWhite = Color( 255, 255, 255, 255 );
-Color Reddy = Color(255, 100, 100, 255);
-Color ColBlack = Color( 0, 0, 0, 255);
-
-struct Cords {
-	int x;
-	int y;
-}
 
 class Cell {
 	Block block;
 };
 
 Cell[] gridCells;
-
-Cords mouseCords = {0, 0};
-Cords gridCords = {0, 0};
-
-void pushMouseCords(Cords *crds) {
-	crds.x = GetMouseX();
-	crds.y = GetMouseY();
-}
 
 void showGrid() {
 	Cords oldCords = mouseCords;
@@ -94,7 +77,7 @@ void drawGrid() {
 		else DrawRectangleLines(cellX, cellY, rowLen, rowLen, col);
 	}}
 
-	
+
 	DrawLine(gridCords.x, gridCords.y, gridCords.x+rowNum*rowLen, gridCords.y, ColWhite);
 	DrawLine(gridCords.x + rowNum*rowLen, gridCords.y, gridCords.x + rowNum*rowLen, gridCords.y + rowNum*rowLen, ColWhite);
 	DrawLine(gridCords.x + rowNum*rowLen, gridCords.y + rowNum*rowLen, gridCords.x, gridCords.y + rowNum*rowLen, ColWhite);

@@ -4,6 +4,7 @@ import std.system;
 import std.stdio;
 
 import include.grid;
+import include.colors;
 
 int main() {
 	InitWindow(800, 600, "Blocker");
