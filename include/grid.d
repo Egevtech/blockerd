@@ -9,8 +9,6 @@ import std.string;
 
 import include.block;
 
-// typedef ;
-
 alias Color = raylib.raylib_types.Color;
 
 int rowNum = 25;
@@ -95,4 +93,10 @@ void drawGrid() {
 
 		else DrawRectangleLines(cellX, cellY, rowLen, rowLen, col);
 	}}
+
+	
+	DrawLine(gridCords.x, gridCords.y, gridCords.x+rowNum*rowLen, gridCords.y, ColWhite);
+	DrawLine(gridCords.x + rowNum*rowLen, gridCords.y, gridCords.x + rowNum*rowLen, gridCords.y + rowNum*rowLen, ColWhite);
+	DrawLine(gridCords.x + rowNum*rowLen, gridCords.y + rowNum*rowLen, gridCords.x, gridCords.y + rowNum*rowLen, ColWhite);
+	DrawLine(gridCords.x, gridCords.y + rowNum*rowLen, gridCords.x, gridCords.y, ColWhite);
 }
