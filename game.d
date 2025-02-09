@@ -10,7 +10,7 @@ import std.format;
 
 int main() {
 	InitWindow(800, 600, "Blocker");
-	//SetTargetFPS(60);
+	SetTargetFPS(60);
 
 	initBlocks();
 
@@ -20,6 +20,7 @@ int main() {
 
 		updateMouse();
 		showGrid();
+		checkKeyboard();
 
 	EndDrawing();
 	}

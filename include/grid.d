@@ -5,6 +5,8 @@ import include.colors;
 import include.block;
 import include.settings;
 
+import std.stdio;
+
 void showGrid() {
 	Cords oldCords = mouseCords;
 	pushMouseCords(&mouseCords);
@@ -14,12 +16,30 @@ void showGrid() {
 		gridCords.y -= oldCords.y - mouseCords.y;
 	}
 
-	drawGrid();
+	if (IsMouseButtonDown(MOUSE_MIDDLE_BUTTON)) 
+		SetMouseCursor(9);
+	else 
+		SetMouseCursor(3);
+
+	drawGrid();	
+}
+
+void checkKeyboard() {
+	if (IsKeyDown(341) ) {
+		showBlockPallete();
+	}
+
+	if (IsKeyDown(341) && GetMouseWheelMove != 0) {
+		current += GetMouseWheelMove();
+
+		if (current < 1) current = blocks.length - 1;
+		if (current > blocks.length - 1) current = 1;
+	}
 }
 
 void drawGrid() {
 
-	float wheelMove = GetMouseWheelMove() * 2.00;
+	float wheelMove = IsKeyDown(341) ? 0 : GetMouseWheelMove() * 2.00;
 
 	gridCords.x -= wheelMove * 7f;
 	gridCords.y -= wheelMove * 7f;
@@ -58,8 +78,7 @@ void drawGrid() {
 			mouseCords.y < cellY + rowLen) {
 				DrawRectangle(cellX, cellY, rowLen, rowLen, AGrey);
 				gridNCords = Cords(nx, ny);
-			}
-		else {
+		} else {
 			DrawRectangleLines(cellX, cellY, rowLen, rowLen, col);
 		}	
 	}}
