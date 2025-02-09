@@ -21,17 +21,24 @@ int main() {
 
 void menu() {
 	Button startButton = new Button(Cords(GetScreenWidth()/2-(100/2), GetScreenHeight()/2), vec2(100, 30), "Start");
+	Button quitButton = new Button(Cords(GetScreenWidth()/2-(100/2), GetScreenHeight()/2+40), vec2(100, 30), "Quit");
 
 	while(!WindowShouldClose()) {
 	BeginDrawing();
 		ClearBackground(ColBlack);
 
 		startButton.draw();
+		quitButton.draw();
 
 		if (startButton.isClicked(MOUSE_LEFT_BUTTON)) {
 			EndDrawing();
 			game();
 			return;
+		}
+
+		if (quitButton.isClicked(MOUSE_LEFT_BUTTON)) {
+			EndDrawing();
+			break;
 		}
 
 	EndDrawing();
