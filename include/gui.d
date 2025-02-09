@@ -2,6 +2,10 @@ import include.cords;
 import include.settings;
 import include.colors;
 
+import std.conv : to;
+import std.string;
+import std.stdio;
+
 import raylib;
 
 alias cstr = char*;
@@ -55,5 +59,6 @@ class Button : GuiObject {
 		if (isHovered()) col = Reddy;
 
 		DrawRectangle(pos.x, pos.y, size.x, size.y, col);
+		DrawText(toStringz(title), pos.x + size.x/ 2 - MeasureText(toStringz(title), 20 ) / 2, pos.y + size.y/2 - 20/2, 20, ColBlack);
 	}
 };

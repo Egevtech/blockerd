@@ -16,13 +16,11 @@ int main() {
 
 	menu();
 
-	CloseWindow();
-
 	return 0;
 }
 
 void menu() {
-	Button startButton = new Button(Cords(GetScreenWidth()/2-(100/2), GetScreenHeight()/2), vec2(100, 30), "title");
+	Button startButton = new Button(Cords(GetScreenWidth()/2-(100/2), GetScreenHeight()/2), vec2(100, 30), "Start");
 
 	while(!WindowShouldClose()) {
 	BeginDrawing();
@@ -33,10 +31,12 @@ void menu() {
 		if (startButton.isClicked(MOUSE_LEFT_BUTTON)) {
 			EndDrawing();
 			game();
+			return;
 		}
 
 	EndDrawing();
 	}
+	CloseWindow();
 }
 
 void game() {
