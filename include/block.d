@@ -57,14 +57,33 @@ void initBlocks() {
 	clearGrid();
 
 	selectItem(1);
+
+	writeln("Собраны блоки:");
+	foreach(Block blc; blocks) {
+		writeln("Блок ", blc.title);
+	}
 }
 
 void clearGrid() {
+	if (isGridEmpty()) return;	
+
+	writeln("Поле очищено");
 	for (int i = 0; i < rowNum; i++) {
 		for (int j = 0; j < rowNum; j++) {
 			gridCells[i][j] = new Cell(&Void);
 		}
 	}
+}
+
+int isGridEmpty() {
+	for (int i = 0; i < rowNum; i++) {
+		for (int j = 0; j < rowNum; j++) {
+			if (!gridCells[i][j]) return 0;
+			if (gridCells[i][j].block != &Void) return 0;
+		}
+	}
+
+	return 1;
 }
 
 void updateMouse() {
@@ -89,11 +108,8 @@ void destroyBlock(Cords c) {
 }
 
 void selectItem(int block) {
+	writeln("Выбран блок: ", blocks[current].title);
 	current = block;
-}
-
-void changeBlock() {
-
 }
 
 void showBlockPallete() {
