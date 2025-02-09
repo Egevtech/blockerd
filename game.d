@@ -11,8 +11,8 @@ import std.stdio;
 import std.format;
 
 int main() {
+	SetWindowState(0x00000004);
 	InitWindow(800, 600, "Blocker");
-	SetTargetFPS(120);
 
 	menu();
 
@@ -20,11 +20,12 @@ int main() {
 }
 
 void menu() {
-	Button startButton = new Button(Cords(GetScreenWidth()/2-(100/2), GetScreenHeight()/2), vec2(100, 30), "Start");
-	Button quitButton = new Button(Cords(GetScreenWidth()/2-(100/2), GetScreenHeight()/2+40), vec2(100, 30), "Quit");
 
 	while(!WindowShouldClose()) {
 	BeginDrawing();
+		Button startButton = new Button(Cords(GetScreenWidth()/2-(100/2), GetScreenHeight()/2), vec2(100, 30), "Start");
+		Button quitButton = new Button(Cords(GetScreenWidth()/2-(100/2), GetScreenHeight()/2+40), vec2(100, 30), "Quit");
+
 		ClearBackground(ColBlack);
 
 		startButton.draw();
