@@ -5,6 +5,7 @@ import include.settings;
 import raylib;
 
 import std.stdio;
+import std.string;
 
 class Cell {
 	Block *block;
@@ -60,7 +61,7 @@ void initBlocks() {
 
 	writeln("Собраны блоки:");
 	foreach(Block blc; blocks) {
-		writeln("Блок ", blc.title);
+		writeln("Блок ", fromStringz(blc.name));
 	}
 }
 
@@ -95,21 +96,20 @@ void setBlock(Block *block, Cords c) {
 	if (gridCells[c.x][c.y].block != block) {
 		gridCells[c.x][c.y] = new Cell(block);
 
-		writeln("Установлен блок: ", block.name, ", ", c);
+		writeln("Установлен блок: ", fromStringz(block.name), ", ", c);
 	}
 }
 
 void destroyBlock(Cords c) {
 	if (gridCells[c.x][c.y].block != &Void) {
+		writeln("Блок удален: ", fromStringz(gridCells[c.x][c.y].block.name), ", ", c);
 		gridCells[c.x][c.y] = new Cell(&Void);
-
-		writeln("Блок удален: ", c);
 	}
 }
 
-void selectItem(int block) {
-	writeln("Выбран блок: ", blocks[current].title);
+void selectItem(long block) {
 	current = block;
+	writeln("Выбран блок: ", fromStringz(blocks[current].name));
 }
 
 void showBlockPallete() {

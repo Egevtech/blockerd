@@ -30,10 +30,13 @@ void checkKeyboard() {
 	}
 
 	if (IsKeyDown(341) && GetMouseWheelMove != 0) {
-		current += GetMouseWheelMove();
+		long currentTemmp = current;
+		currentTemmp += GetMouseWheelMove();
 
-		if (current < 1) current = blocks.length - 1;
-		if (current > blocks.length - 1) current = 1;
+		if (currentTemmp < 1) currentTemmp = blocks.length - 1;
+		if (currentTemmp > blocks.length - 1) currentTemmp = 1;
+
+		selectItem(currentTemmp);
 	}
 
 	if (IsKeyDown(67)) {
