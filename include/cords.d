@@ -1,9 +1,8 @@
 import raylib;
 
-struct Cords {
-	int x;
-	int y;
-}
+import include.settings;
+
+alias Cords = vec2;
 
 Cords mouseCords = {0, 0};
 Cords gridCords = {0, 0};

@@ -35,6 +35,10 @@ void checkKeyboard() {
 		if (current < 1) current = blocks.length - 1;
 		if (current > blocks.length - 1) current = 1;
 	}
+
+	if (IsKeyDown(67)) {
+		clearGrid();
+	}
 }
 
 void drawGrid() {
