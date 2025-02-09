@@ -36,19 +36,22 @@ Block Grass;
 Block Sand;
 Block Void;
 Block Ice;
+Block Granite;
 
 long current;
 
 void initBlocks() {
 	Void = new Block("void", "Void", "Empty", ColBlack);
 	Grass = new Block("grass", "Grass", "Travka", ColGreen);
-	Sand = new Block("sand", "Sand", "It's falling", ColYellow);
+	Sand = new Block("sand", "Sand", "It's falling(maybe)", ColYellow);
 	Ice = new Block("ice", "Ice", "So cold!", LBlue);
+	Granite = new Block("granite", "Red granite", "Very smart", Reddy);
 
 	blocks ~= Void;
 	blocks ~= Grass;
 	blocks ~= Sand;
 	blocks ~= Ice;
+	blocks ~= Granite;
 
 	selectItem(0);
 	clearGrid();
