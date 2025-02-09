@@ -74,7 +74,6 @@ void updateMouse() {
 
 void setBlock(Block *block, Cords c) {
 	if (gridCells[c.x][c.y].block != block) {
-		destroyBlock(c);
 		gridCells[c.x][c.y] = new Cell(block);
 
 		writeln("Установлен блок: ", block.name, ", ", c);
