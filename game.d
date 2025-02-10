@@ -9,6 +9,7 @@ import include.settings;
 
 import std.stdio;
 import std.format;
+import std.string;
 
 int main() {
 	SetWindowState(0x00000004);
@@ -42,6 +43,7 @@ void menu() {
 			break;
 		}
 
+		drawOverlay();
 	EndDrawing();
 	}
 	CloseWindow();
@@ -58,8 +60,14 @@ void game() {
 		showGrid();
 		checkKeyboard();
 
+		drawOverlay();
 	EndDrawing();
 	}
 
 	CloseWindow();
+}
+
+void drawOverlay() {
+	DrawText("Blocker v0.0.1-beta\n", 10, GetScreenHeight() - 20*2, 10, ColWhite);
+	DrawText(toStringz(format("%s%d", "FPS: ", GetFPS())), 10, GetScreenHeight() - 20*1, 10, ColWhite);
 }
