@@ -20,13 +20,13 @@ alias cstr = char*;
 
 class GuiObject {
 	Cords pos;
-	vec2 size;
+	Vec2 size;
 
 	string title;
 
 	this() {}
 
-	this (Cords pos, vec2 size, string title) {
+	this (Cords pos, Vec2 size, string title) {
 		this.pos = pos;
 		this.size = size;
 		this.title = title;
@@ -49,7 +49,7 @@ class Button : GuiObject {
 		super();
 	}
 
-	this (Cords pos, vec2 size, string title) {
+	this (Cords pos, Vec2 size, string title) {
 		super(pos, size, title);
 	}
 

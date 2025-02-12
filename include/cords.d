@@ -2,7 +2,7 @@ import raylib;
 
 import include.settings;
 
-alias Cords = vec2;
+alias Cords = Vec2;
 
 Cords mouseCords = {0, 0};
 Cords gridCords = {0, 0};

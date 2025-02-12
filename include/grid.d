@@ -15,12 +15,7 @@ void showGrid() {
 		gridCords.x -= oldCords.x - mouseCords.x;
 		gridCords.y -= oldCords.y - mouseCords.y;
 	}
-
-	if (IsMouseButtonDown(MOUSE_MIDDLE_BUTTON)) 
-		SetMouseCursor(9);
-	else 
-		SetMouseCursor(3);
-
+	
 	drawGrid();	
 }
 

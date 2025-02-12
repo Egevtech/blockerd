@@ -22,10 +22,13 @@ int main() {
 
 void menu() {
 
+	Button startButton;
+	Button quitButton;
+
 	while(!WindowShouldClose()) {
 	BeginDrawing();
-		Button startButton = new Button(Cords(GetScreenWidth()/2-(100/2), GetScreenHeight()/2), vec2(100, 30), "Start");
-		Button quitButton = new Button(Cords(GetScreenWidth()/2-(100/2), GetScreenHeight()/2+40), vec2(100, 30), "Quit");
+		startButton = new Button(Cords(GetScreenWidth()/2-(100/2), GetScreenHeight()/2), Vec2(100, 30), "Start");
+		quitButton = new Button(Cords(GetScreenWidth()/2-(100/2), GetScreenHeight()/2+40), Vec2(100, 30), "Quit");
 
 		ClearBackground(ColBlack);
 
