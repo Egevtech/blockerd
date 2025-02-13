@@ -73,7 +73,10 @@ void drawGrid() {
 
 
 		DrawRectangle(cellX, cellY, rowLen, rowLen, gridCells[nx][ny].block.hintColor);
-
+		if (mouseCords.x >= cellX - 100 &&
+			mouseCords.x < cellX + rowLen + 100 &&
+			mouseCords.y >= cellY - 100 &&
+			mouseCords.y < cellY + rowLen + 100) {
 		if (mouseCords.x >= cellX &&
 			mouseCords.x < cellX + rowLen &&
 			mouseCords.y >= cellY &&
@@ -83,6 +86,7 @@ void drawGrid() {
 		} else {
 			DrawRectangleLines(cellX, cellY, rowLen, rowLen, col);
 		}	
+		}
 	}}
 
 	DrawLine(gridCords.x, gridCords.y, gridCords.x+rowNum*rowLen, gridCords.y, ColWhite);

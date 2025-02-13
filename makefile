@@ -21,7 +21,10 @@ pre: temp
 	${cc} -c include/gui.d -of=temp/gui.o ${paths}
 
 build: target pre	
-	${cc} temp/game.o temp/grid.o temp/block.o temp/cords.o temp/colors.o temp/settings.o temp/gui.o -of=target/blocker -L-lraylib 
+	${cc} temp/game.o temp/grid.o temp/block.o temp/cords.o temp/colors.o temp/settings.o temp/gui.o -of=target/blocker -L-lraylib
+
+standalone: target pre
+	${cc} temp/game.o temp/grid.o temp/block.o temp/cords.o temp/colors.o temp/settings.o temp/gui.o -of=target/blocker -L-lraylib -L-static-libgcc
 
 run: build
 	target/blocker

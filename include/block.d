@@ -15,7 +15,7 @@ class Cell {
 	}
 };
 
-Cell[25][25] gridCells;
+Cell[50][50] gridCells;
 
 class Block {
 	Color hintColor;
