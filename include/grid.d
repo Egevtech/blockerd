@@ -80,7 +80,7 @@ void drawGrid() {
 				DrawRectangle(cellX, cellY, rowLen, rowLen, AGrey);
 				gridNCords = Cords(nx, ny);
 		} else {
-			//DrawRectangleLines(cellX, cellY, rowLen, rowLen, col);
+			DrawRectangleLines(cellX, cellY, rowLen, rowLen, Color(100, 100, 100, 255));
 		}
 	}}
 
