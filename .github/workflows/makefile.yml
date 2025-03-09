@@ -12,5 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: chdir
+      run: pwd
+
     - name: build
       run: make
