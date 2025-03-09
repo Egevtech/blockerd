@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: chdir
-      run: ls
+    - name: pre
+      run: make pre
 
-    - name: build
-      run: make -C
+    - name: link
+      run: make link
